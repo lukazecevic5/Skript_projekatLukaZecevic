@@ -18,8 +18,9 @@ from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
 
+app_name="account"
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('Projekat2SJ.apps.public.urls')),
-    path('accounts/', include('Projekat2SJ.apps.account.urls'))
+    path('accounts/login', auth_views.LoginView.as_view(template_name="accounts/login.html"), name = "login"),
+    path('accounts/logout', auth_views.LogoutView.as_view(), name = "logout"),
+    path('profile', views.ProfileView.as_view(), name = "profile")
 ]
